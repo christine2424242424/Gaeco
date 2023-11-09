@@ -1,0 +1,69 @@
+
+//ultrasonic
+const int trigPin = 2;
+const int echoPin = 1;
+const int redLedPin = 6;
+const int yellowLedPin = 5;
+const int greenLedPin = 4;
+const int buzzerPin = 3;
+
+void setup() {
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(redLedPin, OUTPUT);
+  pinMode(yellowLedPin, OUTPUT);
+  pinMode(greenLedPin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT);
+
+}
+
+void loop() {
+  long duration, distance;
+
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echoPin, HIGH);
+
+  distance = duration / 58.2;
+
+
+  
+  if (distance < 10) {
+    digitalWrite(redLedPin, HIGH);
+    digitalWrite(yellowLedPin, LOW);
+    digitalWrite(greenLedPin, LOW);
+    tone(buzzerPin,1000);
+  
+    delay(1000);
+   
+    
+    } else if (distance >10 && distance <=20) {
+      digitalWrite(redLedPin, LOW);
+      digitalWrite(yellowLedPin, HIGH);
+      digitalWrite(greenLedPin, LOW); 
+  
+      noTone(buzzerPin); 
+      delay(500); 
+      
+     
+      
+    } else if (distance >20 && distance <=30) {
+      digitalWrite(redLedPin, LOW); 
+      digitalWrite(yellowLedPin, LOW); 
+      digitalWrite(greenLedPin,HIGH); 
+      
+     
+      
+    } else {
+      digitalWrite(redLedPin, LOW); 
+      digitalWrite(yellowLedPin, LOW); 
+      digitalWrite(greenLedPin,HIGH); 
+      
+       
+    }
+}
