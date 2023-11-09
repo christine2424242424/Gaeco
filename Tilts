@@ -1,0 +1,36 @@
+//tiltsensor 
+int  tiltsensor = 7;
+int led1 = 8;
+int led2 = 10;
+int buzz = 6;
+
+void setup (){
+pinMode(tiltsensor, INPUT);
+pinMode(led1, OUTPUT);
+pinMode(led2, OUTPUT);
+pinMode(buzz, OUTPUT);
+
+  Serial.begin(9600);
+
+}
+
+void loop(){
+  
+  if (digitalRead(tiltsensor) ==1)
+{
+
+digitalWrite(led1, HIGH);
+digitalWrite(led2, LOW);
+digitalWrite(buzz, HIGH);
+delay(100);
+}
+else 
+{
+
+digitalWrite(led1, LOW);
+digitalWrite(led2, HIGH);
+digitalWrite(buzz, LOW);
+
+}
+  delay(100);
+}
